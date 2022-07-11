@@ -1,0 +1,19 @@
+{
+    "ts-node": {
+        "files": true
+    },
+    "compilerOptions": {
+        "target": "es6",
+        "module": "CommonJS",
+        "outDir": "./dist",
+        "rootDir": ".",
+        "strict": true,
+        "strictPropertyInitialization": false,
+        "moduleResolution": "node",
+        "noImplicitAny": false,
+        "esModuleInterop": true,
+        "experimentalDecorators": true,
+        "emitDecoratorMetadata": true
+    },
+    "exclude": ["node_modules"]
+}

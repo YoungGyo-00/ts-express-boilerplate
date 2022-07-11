@@ -1,0 +1,28 @@
+{
+    "env": {
+        "browser": true,
+        "es6": true,
+        "node": true
+    },
+    "plugins": ["prettier", "@typescript-eslint"],
+    "extends": [
+        "eslint:recommended",
+        "plugin:@typescript-eslint/eslint-recommended",
+        "plugin:@typescript-eslint/recommended"
+    ],
+    "parserOptions": {
+        "parser": "@typescript-eslint/parser",
+        "ecmaVersion": 2020,
+        "sourceType": "module"
+    },
+    "rules": {
+        "prettier/prettier": [
+            "error",
+            {
+                "endOfLine": "auto",
+                "tabWidth": 4
+            }
+        ]
+    },
+    "ignorePatterns": ["dist/", "node_modules/"]
+}
