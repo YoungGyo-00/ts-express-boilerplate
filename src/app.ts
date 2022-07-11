@@ -1,15 +1,15 @@
-import express, { Application, NextFunction } from "express";
+import express, { Application, NextFunction, Request, Response } from "express";
 import morgan from "morgan";
 import cookieParser from "cookie-parser";
 import passport from "passport";
-import passportConfig from "./passport";
+// import passportConfig from "./passport";
 import FileStore from "session-file-store";
 import session from "express-session";
 import dotenv from "dotenv";
 import cors from "cors";
 dotenv.config();
 
-import ApiController from "./api/routes/index";
+import ApiRouter from "./api/routes/index";
 const { PORT, COOKIE_SECRET } = process.env;
 const sessionStore = FileStore(session);
 const store = new sessionStore();
@@ -27,7 +27,7 @@ class App {
 
     setMiddleWare() {
         this.app.set("port", PORT || 8080);
-        passportConfig();
+        // passportConfig();
 
         this.app.use(cors());
         this.app.use(morgan("dev"));
@@ -62,11 +62,11 @@ class App {
     }
 
     getRouter() {
-        this.app.use(ApiController);
+        this.app.use(ApiRouter);
     }
 
     errorHandler() {
-        this.app.use((req, res, next) => {
+        this.app.use((req: Request, res: Response, next: NextFunction) => {
             const err: any = new Error(
                 `${req.method} ${req.url} 라우터가 없습니다`,
             );
@@ -75,14 +75,17 @@ class App {
         });
 
         // eslint-disable-next-line no-unused-vars
-        this.app.use((err: any, req: any, res: any, next: NextFunction) => {
-            res.locals.message = err.message;
-            res.locals.error = process.env.NODE_ENV !== "production" ? err : {};
-            res.status(err.status || 500);
+        this.app.use(
+            (err: any, req: Request, res: Response, next: NextFunction) => {
+                res.locals.message = err.message;
+                res.locals.error =
+                    process.env.NODE_ENV !== "production" ? err : {};
+                res.status(err.status || 500);
 
-            console.error(err);
-            res.json({ message: err.message });
-        });
+                console.error(err);
+                res.json({ message: err.message });
+            },
+        );
     }
 }
 
