@@ -5,7 +5,7 @@ import passport from "passport";
 import User from "../models/entities/user";
 const LocalStrategy = passportLocal.Strategy;
 
-export default (USERNAMEFIELD, PASSWORDFIELD) => {
+export default (USERNAMEFIELD: string, PASSWORDFIELD: string) => {
     passport.use(
         new LocalStrategy(
             {
@@ -30,7 +30,7 @@ export default (USERNAMEFIELD, PASSWORDFIELD) => {
 
                     const result = await bcrypt.compare(
                         password,
-                        exUser.PASSWORDFIELD,
+                        exUser.password,
                     );
                     if (!result) {
                         // 비밀번호가 맞는지 확인
