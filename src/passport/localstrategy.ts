@@ -4,22 +4,20 @@ import passport from "passport";
 
 import User from "../models/entities/user";
 const LocalStrategy = passportLocal.Strategy;
-const { USERNAMEFIELD, PASSWORDFIELD } = process.env;
 
 export default () => {
     passport.use(
         new LocalStrategy(
             {
                 // 첫번째 인자는 객체
-                usernameField: USERNAMEFIELD,
-                passwordField: PASSWORDFIELD || "password",
+                usernameField: "email",
+                passwordField: "password",
             },
             async (email, password, done) => {
                 // 두번째 인자는 함수
                 try {
                     const exUser = await User.findOne({
-                        // 로그인할 유저가 DB에 있는지 확인
-                        where: { usernameField: email },
+                        email: email,
                     });
 
                     if (!exUser) {

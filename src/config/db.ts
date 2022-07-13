@@ -1,13 +1,8 @@
 import path from "path";
 import * as dotenv from "dotenv";
-import { ConnectionOptions } from "typeorm";
 dotenv.config({ path: "src/.env" });
 
 const { _USERNAME, PASSWORD, DATABASE, HOST, DB_PORT } = process.env;
-
-interface config {
-    [key: string]: ConnectionOptions; // index signature
-}
 
 const configs: config = {
     development: {

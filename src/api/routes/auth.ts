@@ -11,7 +11,7 @@ class AuthRouter {
     }
 
     post() {
-        this.router.post("/signup", AuthController.signup);
+        this.router.post("/signup", isNotLoggedIn, AuthController.signup);
     }
 }
 

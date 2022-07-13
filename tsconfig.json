@@ -8,7 +8,7 @@
         "outDir": "./dist",
         "rootDir": ".",
         "strict": true,
-        "strictPropertyInitialization": false,
+        "strictPropertyInitialization": true,
         "moduleResolution": "node",
         "noImplicitAny": true,
         "esModuleInterop": true,

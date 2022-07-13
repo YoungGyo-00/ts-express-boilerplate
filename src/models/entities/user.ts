@@ -15,12 +15,12 @@ class User extends BaseEntity {
     @Column({
         nullable: true,
     })
-    email: string;
+    email!: string;
 
     @Column({
         nullable: true,
     })
-    password: string;
+    password!: string;
 
     // @CreateDateColumn({ type: "timestamp with time zone" })
     // createdAt: Date;

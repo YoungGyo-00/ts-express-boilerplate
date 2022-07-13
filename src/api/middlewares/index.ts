@@ -1,4 +1,5 @@
 import { NextFunction, Request, Response } from "express";
+import { ISLOGGEDIN } from "../../errors/error";
 
 const isNotLoggedIn = async (
     req: Request,
@@ -9,7 +10,7 @@ const isNotLoggedIn = async (
         if (!req.isAuthenticated()) {
             next();
         } else {
-            throw { status: 403, message: "로그인 상태입니다" };
+            throw new ISLOGGEDIN();
         }
     } catch (err) {
         console.error("\nmiddleware index.js isNotLoggedIn에서 에러");

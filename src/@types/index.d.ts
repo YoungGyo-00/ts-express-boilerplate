@@ -1,10 +1,16 @@
 /* eslint-disable @typescript-eslint/no-empty-interface */
 import { ErrorSafety } from "./return";
 import UserModel from "../models/entities/user";
+import { ConnectionOptions } from "typeorm";
 
 declare global {
-    export interface Mutation<T> extends ErrorSafety<T> {}
+    interface Mutation<T> extends ErrorSafety<T> {}
+
     namespace Express {
-        export interface User extends UserModel {}
+        interface User extends UserModel {}
+    }
+
+    interface config {
+        [key: string]: ConnectionOptions; // index signature
     }
 }
