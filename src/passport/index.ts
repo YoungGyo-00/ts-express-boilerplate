@@ -9,12 +9,12 @@ import User from "../models/entities/user";
 export default () => {
     // req.login(user, ...) 가 실행되면, serializeUser가 실행
     // 로그인 과정에서만 실행
-    passport.serializeUser((user, done) => {
+    passport.serializeUser((user: User, done) => {
         done(null, user.id); // 로그인 성공 시, done(null, user) 함수의 두 번째 인자 user를 전달받아 세션에 저장
     });
 
     // 서버 요청이 올 때마다 항상 실행하여 로그인 유저 정보를 불러와 이용
-    passport.deserializeUser((id, done) => {
+    passport.deserializeUser((id: string, done) => {
         // req.session에 저장된 사용자 아이디를 바탕으로 DB 조회 후 req.user에 저장
         User.findOne({
             where: { email: id },
