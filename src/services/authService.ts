@@ -7,8 +7,8 @@ class UserService {
 
     signup() {
         const user = new User();
-        user.firstName = "test";
-        user.lastName = "test";
+        user.email = "test";
+        user.password = "test";
 
         return this.authRepository.signup(user);
     }

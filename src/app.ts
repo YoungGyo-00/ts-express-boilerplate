@@ -2,7 +2,7 @@ import express, { Application, NextFunction, Request, Response } from "express";
 import morgan from "morgan";
 import cookieParser from "cookie-parser";
 import passport from "passport";
-// import passportConfig from "./passport";
+import passportConfig from "./passport";
 import FileStore from "session-file-store";
 import session from "express-session";
 import dotenv from "dotenv";
@@ -27,7 +27,7 @@ class App {
 
     setMiddleWare() {
         this.app.set("port", PORT || 8080);
-        // passportConfig();
+        passportConfig();
 
         this.app.use(cors());
         this.app.use(morgan("dev"));

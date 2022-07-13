@@ -1,9 +1,6 @@
-import * as configs from "./config";
+import * as configs from "./db";
 import { ConnectionOptions } from "typeorm";
-import "reflect-metadata";
 
-const env: string = process.env.NODE_ENV || "development";
-
-const connectionOptions: ConnectionOptions = configs[env];
+const connectionOptions: ConnectionOptions = configs["development"];
 
 export default connectionOptions;

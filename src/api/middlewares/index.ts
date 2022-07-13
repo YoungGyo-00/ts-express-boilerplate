@@ -1,4 +1,10 @@
-const isNotLoggedIn = async (req, res, next) => {
+import { NextFunction, Request, Response } from "express";
+
+const isNotLoggedIn = async (
+    req: Request,
+    res: Response,
+    next: NextFunction,
+) => {
     try {
         if (!req.isAuthenticated()) {
             next();

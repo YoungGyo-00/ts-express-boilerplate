@@ -4,14 +4,15 @@ import passport from "passport";
 
 import User from "../models/entities/user";
 const LocalStrategy = passportLocal.Strategy;
+const { USERNAMEFIELD, PASSWORDFIELD } = process.env;
 
-export default (USERNAMEFIELD: string, PASSWORDFIELD: string) => {
+export default () => {
     passport.use(
         new LocalStrategy(
             {
                 // 첫번째 인자는 객체
                 usernameField: USERNAMEFIELD,
-                passwordField: PASSWORDFIELD,
+                passwordField: PASSWORDFIELD || "password",
             },
             async (email, password, done) => {
                 // 두번째 인자는 함수

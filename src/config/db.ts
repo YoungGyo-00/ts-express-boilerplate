@@ -1,13 +1,14 @@
 import path from "path";
 import * as dotenv from "dotenv";
+import { ConnectionOptions } from "typeorm";
 dotenv.config({ path: "src/.env" });
 
-const { _USERNAME, PASSWORD, DATABASE, HOST, TYPE, DB_PORT } = process.env;
+const { _USERNAME, PASSWORD, DATABASE, HOST, DB_PORT } = process.env;
 
-const development = {
-    type: TYPE,
+const development: ConnectionOptions = {
+    type: "mysql",
     host: HOST,
-    port: DB_PORT,
+    port: Number(DB_PORT),
     username: _USERNAME,
     password: PASSWORD,
     database: DATABASE,
