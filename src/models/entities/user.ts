@@ -10,17 +10,17 @@ import {
 @Entity("users")
 class User extends BaseEntity {
     @PrimaryGeneratedColumn()
-    id!: number;
+    id: number;
 
     @Column({
         nullable: true,
     })
-    email!: string;
+    email: string;
 
     @Column({
         nullable: true,
     })
-    password!: string;
+    password: string;
 
     // @CreateDateColumn({ type: "timestamp with time zone" })
     // createdAt: Date;

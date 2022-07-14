@@ -10,7 +10,7 @@ declare global {
         interface User extends UserModel {}
     }
 
-    interface config {
-        [key: string]: ConnectionOptions; // index signature
+    interface Signature {
+        [key: string]: any; // index signature
     }
 }

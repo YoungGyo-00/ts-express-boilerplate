@@ -31,20 +31,19 @@ class App {
 
         this.app.use(cors());
         this.app.use(morgan("dev"));
-        this.app.use(express.json()); // json Request Body 파싱
-        this.app.use(express.urlencoded({ extended: false })); // x-www-form-urlencoded 형태 데이터 파싱, querystring(false), qs(true)
-        this.app.use(cookieParser(COOKIE_SECRET)); // 암호화(서명)된 쿠키 발급
+        this.app.use(express.json());
+        this.app.use(express.urlencoded({ extended: false }));
+        this.app.use(cookieParser(COOKIE_SECRET));
         this.app.use(
             session({
-                resave: false, // 세션 데이터가 바뀌기 전까지 세션저장소의 값을 저장할지 여부
-                secret: COOKIE_SECRET || "secret", // cookieParser와 같은 signed(서명) 사용
-                store: store, // mysql(실제 배포 시) 에 세션을 저장할 수도 있음
-                saveUninitialized: false, // 세션이 필요하기 전에 세션 구동할지 여부
+                resave: false,
+                secret: COOKIE_SECRET || "secret",
+                store: store,
+                saveUninitialized: false,
                 cookie: {
-                    // 세션 쿠키 설정
-                    httpOnly: true, // JS를 통해 세션 쿠키를 사용할 수 없도록 설정
-                    secure: false, // http 환경에서만 사용(개발 단계)
-                    maxAge: 1 * 60 * 60 * 1000, // 1시간 설정
+                    httpOnly: true,
+                    secure: false,
+                    maxAge: 1 * 60 * 60 * 1000,
                 },
                 rolling: true, // expiration reset
                 genid: () => {
@@ -53,8 +52,8 @@ class App {
                 },
             }),
         );
-        this.app.use(passport.initialize()); // passport 구성을 위한 미들웨어
-        this.app.use(passport.session()); // passport.deserializeUser() Method 실행
+        this.app.use(passport.initialize());
+        this.app.use(passport.session());
     }
 
     setStatic() {
@@ -74,7 +73,6 @@ class App {
             next(err);
         });
 
-        // eslint-disable-next-line no-unused-vars
         this.app.use(
             (err: any, req: Request, res: Response, next: NextFunction) => {
                 res.locals.message = err.message;

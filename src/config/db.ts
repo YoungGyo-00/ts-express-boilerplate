@@ -4,7 +4,7 @@ dotenv.config({ path: "src/.env" });
 
 const { _USERNAME, PASSWORD, DATABASE, HOST, DB_PORT } = process.env;
 
-const configs: config = {
+const configs: Signature = {
     development: {
         type: "mysql",
         host: HOST,

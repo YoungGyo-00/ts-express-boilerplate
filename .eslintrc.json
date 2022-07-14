@@ -22,7 +22,9 @@
                 "endOfLine": "auto",
                 "tabWidth": 4
             }
-        ]
+        ],
+        "@typescript-eslint/no-explicit-any": "off",
+        "@typescript-eslint/no-unused-vars": "off"
     },
     "ignorePatterns": ["dist/", "node_modules/"]
 }
