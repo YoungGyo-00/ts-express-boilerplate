@@ -1,7 +1,7 @@
 import { NextFunction, Request, Response } from "express";
 import { OK } from "http-status-codes";
 import { Container } from "typedi";
-import AuthService from "../services/authService";
+import { AuthService } from "../services/authService";
 
 export class AuthController {
     static signup = async (req: Request, res: Response, next: NextFunction) => {

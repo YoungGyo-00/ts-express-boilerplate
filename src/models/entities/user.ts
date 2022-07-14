@@ -8,7 +8,7 @@ import {
 } from "typeorm";
 
 @Entity("users")
-class User extends BaseEntity {
+export class User extends BaseEntity {
     @PrimaryGeneratedColumn()
     id: number;
 
@@ -28,5 +28,3 @@ class User extends BaseEntity {
     // @UpdateDateColumn({ type: "timestamp with time zone" })
     // updatedAt: Date;
 }
-
-export default User;

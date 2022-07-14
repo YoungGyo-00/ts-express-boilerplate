@@ -1,6 +1,6 @@
 import express, { Router } from "express";
 import { isNotLoggedIn } from "../middlewares/index";
-import { AuthController } from "../../controllers/authContoller";
+import { AuthController } from "../../controllers/authController";
 
 class AuthRouter {
     public router: Router = express.Router();

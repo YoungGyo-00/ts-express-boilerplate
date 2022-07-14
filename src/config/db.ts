@@ -1,17 +1,14 @@
 import path from "path";
-import * as dotenv from "dotenv";
-dotenv.config({ path: "src/.env" });
-
-const { _USERNAME, PASSWORD, DATABASE, HOST, DB_PORT } = process.env;
+import { host, db_port, username, password, database } from "./index";
 
 const configs: Signature = {
     development: {
         type: "mysql",
-        host: HOST,
-        port: Number(DB_PORT),
-        username: _USERNAME,
-        password: PASSWORD,
-        database: DATABASE,
+        host: host,
+        port: db_port,
+        username: username,
+        password: password,
+        database: database,
         synchronize: true,
         logging: true,
         dropSchema: false,
@@ -29,11 +26,11 @@ const configs: Signature = {
 
     production: {
         type: "mysql",
-        host: HOST,
-        port: Number(DB_PORT),
-        username: _USERNAME,
-        password: PASSWORD,
-        database: DATABASE,
+        host: host,
+        port: Number(db_port),
+        username: username,
+        password: password,
+        database: database,
         synchronize: true,
         logging: true,
         dropSchema: false,

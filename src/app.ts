@@ -5,12 +5,10 @@ import passport from "passport";
 import passportConfig from "./passport";
 import FileStore from "session-file-store";
 import session from "express-session";
-import dotenv from "dotenv";
 import cors from "cors";
-dotenv.config();
+import ApiRouter from "./api/routers/index";
+import { port, cookie_secret } from "./config/index";
 
-import ApiRouter from "./api/routes/index";
-const { PORT, COOKIE_SECRET } = process.env;
 const sessionStore = FileStore(session);
 const store = new sessionStore();
 
@@ -26,18 +24,18 @@ class App {
     }
 
     setMiddleWare() {
-        this.app.set("port", PORT || 8080);
+        this.app.set("port", port || 8080);
         passportConfig();
 
         this.app.use(cors());
         this.app.use(morgan("dev"));
         this.app.use(express.json());
         this.app.use(express.urlencoded({ extended: false }));
-        this.app.use(cookieParser(COOKIE_SECRET));
+        this.app.use(cookieParser(cookie_secret));
         this.app.use(
             session({
                 resave: false,
-                secret: COOKIE_SECRET || "secret",
+                secret: cookie_secret || "secret",
                 store: store,
                 saveUninitialized: false,
                 cookie: {

@@ -1,8 +1,8 @@
 import { Service } from "typedi";
-import User from "../entities/user";
+import { User } from "../entities/User";
 
 @Service()
-class AuthRepository {
+export class AuthRepository {
     async signup(user: User): Promise<Mutation<User>> {
         try {
             const result = await User.save(user);
@@ -20,4 +20,3 @@ class AuthRepository {
 }
 
 export { User };
-export default AuthRepository;

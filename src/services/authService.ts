@@ -1,8 +1,8 @@
 import { Service } from "typedi";
-import AuthRepository, { User } from "../models/repository/authRepository";
+import { AuthRepository, User } from "../models/repository/authRepository";
 
 @Service()
-class UserService {
+export class AuthService {
     constructor(private authRepository: AuthRepository) {}
 
     signup() {
@@ -13,5 +13,3 @@ class UserService {
         return this.authRepository.signup(user);
     }
 }
-
-export default UserService;
