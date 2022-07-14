@@ -1,14 +1,17 @@
 import path from "path";
-import { host, db_port, username, password, database } from "./index";
+import { SnakeNamingStrategy } from "typeorm-naming-strategies";
+import { host, db_port, _username, password, database } from "./index";
 
 const configs: Signature = {
     development: {
         type: "mysql",
         host: host,
         port: db_port,
-        username: username,
+        username: _username,
         password: password,
         database: database,
+        timezone: "Z",
+        namingStrategy: new SnakeNamingStrategy(),
         synchronize: true,
         logging: true,
         dropSchema: false,
@@ -28,9 +31,11 @@ const configs: Signature = {
         type: "mysql",
         host: host,
         port: Number(db_port),
-        username: username,
+        username: _username,
         password: password,
         database: database,
+        timezone: "Z",
+        namingStrategy: new SnakeNamingStrategy(),
         synchronize: true,
         logging: true,
         dropSchema: false,

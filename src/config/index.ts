@@ -2,7 +2,7 @@ import * as dotenv from "dotenv";
 dotenv.config({ path: "src/.env" });
 
 const port = process.env.PORT;
-const username = process.env.USERNAME;
+const _username = process.env._USERNAME;
 const password = process.env.PASSWORD;
 const database = process.env.DATABASE;
 const host = process.env.HOST;
@@ -12,7 +12,7 @@ const env: string = process.env.NODE_ENV || "development";
 
 export {
     port,
-    username,
+    _username,
     password,
     database,
     host,

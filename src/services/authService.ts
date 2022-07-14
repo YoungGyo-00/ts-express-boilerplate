@@ -1,5 +1,5 @@
 import { Service } from "typedi";
-import { AuthRepository, User } from "../models/repository/authRepository";
+import { AuthRepository, User } from "../models/repositories/authRepository";
 
 @Service()
 export class AuthService {

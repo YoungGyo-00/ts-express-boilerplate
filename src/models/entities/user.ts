@@ -6,9 +6,10 @@ import {
     CreateDateColumn,
     UpdateDateColumn,
 } from "typeorm";
+import { BaseTimeEntity } from "./BaseTimeEntity";
 
 @Entity("users")
-export class User extends BaseEntity {
+export class User extends BaseTimeEntity {
     @PrimaryGeneratedColumn()
     id: number;
 
@@ -21,10 +22,4 @@ export class User extends BaseEntity {
         nullable: true,
     })
     password: string;
-
-    // @CreateDateColumn({ type: "timestamp with time zone" })
-    // createdAt: Date;
-
-    // @UpdateDateColumn({ type: "timestamp with time zone" })
-    // updatedAt: Date;
 }

@@ -6,6 +6,7 @@ const basename = path.basename(__filename);
 
 class ApiRouter {
     public router: Router = express.Router();
+
     constructor() {
         this.router;
         this.setRouter();
