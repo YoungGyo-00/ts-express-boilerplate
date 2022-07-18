@@ -12,9 +12,9 @@ export default () => {
                 usernameField: "email",
                 passwordField: "password",
             },
-            async (email, password, done) => {
+            async (email: string, password: string, done) => {
                 try {
-                    const exUser = await User.findOne({
+                    const exUser: User | undefined = await User.findOne({
                         email: email,
                     });
 
@@ -24,7 +24,7 @@ export default () => {
                         });
                     }
 
-                    const result = await bcrypt.compare(
+                    const result: boolean = await bcrypt.compare(
                         password,
                         exUser.password,
                     );

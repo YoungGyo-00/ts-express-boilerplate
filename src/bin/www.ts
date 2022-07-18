@@ -1,8 +1,10 @@
 import "reflect-metadata";
 import app from "../app";
-import { createConnection } from "typeorm";
+import { createConnection, useContainer } from "typeorm";
 import { connectionOptions } from "../config/ormconfig";
+import Container from "typedi";
 
+// useContainer(Container);
 createConnection(connectionOptions)
     .then(() => {
         console.log("DB Connection");

@@ -13,7 +13,6 @@ const isNotLoggedIn = async (
             throw new ISLOGGEDIN();
         }
     } catch (err) {
-        console.error("\nmiddleware index.js isNotLoggedIn에서 에러");
         next(err);
     }
 };

@@ -7,7 +7,7 @@ import FileStore from "session-file-store";
 import session from "express-session";
 import cors from "cors";
 import ApiRouter from "./api/routers/index";
-import { port, cookie_secret } from "./config/index";
+import { port, cookie_secret } from "./config/env";
 
 const sessionStore = FileStore(session);
 const store = new sessionStore();

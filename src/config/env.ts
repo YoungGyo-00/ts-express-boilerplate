@@ -1,5 +1,5 @@
-import * as dotenv from "dotenv";
-dotenv.config({ path: "src/.env" });
+import { config } from "dotenv";
+config({ path: "src/.env" });
 
 const port = process.env.PORT;
 const _username = process.env._USERNAME;
