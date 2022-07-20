@@ -1,6 +1,6 @@
-import { BaseEntity, CreateDateColumn, UpdateDateColumn } from "typeorm";
+import { CreateDateColumn, UpdateDateColumn } from "typeorm";
 
-export class BaseTimeEntity extends BaseEntity {
+export class BaseTimeEntity {
     @CreateDateColumn({
         type: "timestamp",
         default: () => "CURRENT_TIMESTAMP(6)",

@@ -15,16 +15,7 @@ const configs: Signature = {
         synchronize: true,
         logging: true,
         dropSchema: false,
-        entities: [
-            path.join(
-                __dirname,
-                "..",
-                "models",
-                "entities",
-                "**",
-                "*{.js,.ts}",
-            ),
-        ],
+        entities: [path.join("src", "models", "entities", "**", "*{.js,.ts}")],
     },
 
     production: {
@@ -39,16 +30,7 @@ const configs: Signature = {
         synchronize: true,
         logging: true,
         dropSchema: false,
-        entities: [
-            path.join(
-                __dirname,
-                "..",
-                "models",
-                "entities",
-                "**",
-                "*{.js,.ts}",
-            ),
-        ],
+        entities: [path.join("src", "models", "entities", "**", "*{.js,.ts}")],
     },
 };
 

@@ -1,4 +1,4 @@
-import { BAD_REQUEST, FORBIDDEN, NOT_FOUND } from "http-status-codes";
+import { BAD_REQUEST, CONFLICT, FORBIDDEN, NOT_FOUND } from "http-status-codes";
 
 abstract class RequestError extends Error {
     status!: number;
@@ -29,4 +29,11 @@ class ISLOGGEDIN extends RequestError {
     }
 }
 
-export { BadRequest, NOTFOUND, ISLOGGEDIN };
+class Conflict extends RequestError {
+    constructor(message = "이미 사용 중인 데이터 입니다. (중복)") {
+        super(message);
+        this.status = CONFLICT;
+    }
+}
+
+export { BadRequest, NOTFOUND, ISLOGGEDIN, Conflict };
