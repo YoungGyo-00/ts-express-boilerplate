@@ -1,4 +1,4 @@
-import { BAD_REQUEST, NOT_FOUND } from "http-status-codes";
+import { BAD_REQUEST, FORBIDDEN, NOT_FOUND } from "http-status-codes";
 
 abstract class RequestError extends Error {
     status!: number;
@@ -25,7 +25,7 @@ class NOTFOUND extends RequestError {
 class ISLOGGEDIN extends RequestError {
     constructor(message = "이미 로그인 상태입니다.") {
         super(message);
-        this.status = 403;
+        this.status = FORBIDDEN;
     }
 }
 

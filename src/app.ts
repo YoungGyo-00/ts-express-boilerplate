@@ -2,12 +2,12 @@ import express, { Application, NextFunction, Request, Response } from "express";
 import morgan from "morgan";
 import cookieParser from "cookie-parser";
 import passport from "passport";
-import passportConfig from "./passport";
+import passportConfig from "./common/passport";
 import FileStore from "session-file-store";
 import session from "express-session";
 import cors from "cors";
 import ApiRouter from "./api/routers/index";
-import { port, cookie_secret } from "./config/env";
+import { port, cookie_secret } from "./common/config/env";
 
 const sessionStore = FileStore(session);
 const store = new sessionStore();

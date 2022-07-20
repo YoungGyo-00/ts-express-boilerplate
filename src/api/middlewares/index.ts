@@ -1,5 +1,5 @@
 import { Request, Response, NextFunction } from "express";
-import { ISLOGGEDIN } from "../../errors/error";
+import { ISLOGGEDIN } from "../../common/errors/error";
 
 const isNotLoggedIn = async (
     req: Request,

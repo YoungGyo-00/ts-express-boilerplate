@@ -1,5 +1,5 @@
 import { ErrorSafety } from "./return";
-import { User as UserModel } from "../models/entities/User";
+import { User as UserModel } from "../../models/entities/User";
 
 declare global {
     interface Mutation<T> extends ErrorSafety<T> {}
