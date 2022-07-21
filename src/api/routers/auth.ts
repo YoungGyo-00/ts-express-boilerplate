@@ -9,15 +9,11 @@ class AuthRouter {
     constructor() {
         this.router;
         this.authController = new AuthController();
-        this.get();
         this.post();
     }
 
-    get() {
-        // this.router.get("/signin", isNotLoggedIn, this.authController.signin);
-    }
-
     post() {
+        this.router.post("/signin", isNotLoggedIn, this.authController.signin);
         this.router.post("/signup", isNotLoggedIn, this.authController.signup);
     }
 }

@@ -3,12 +3,42 @@ import { BadRequest, Conflict } from "../common/errors/error";
 import { UserRequestDto, UserResponseDto } from "../dto/UserDto";
 import { AuthRepository, User } from "../models/repositories/authRepository";
 import bcrypt from "bcrypt";
-import passport from "../common/passport";
-import { INTERNAL_SERVER_ERROR } from "http-status-codes";
+import { NextFunction, Request, Response } from "express";
+import passport from "passport";
+import { OK } from "http-status-codes";
 
 @Service()
 export class AuthService {
     constructor(private authRepository: AuthRepository) {}
+
+    async signin(req: Request, res: Response, next: NextFunction) {
+        passport.authenticate("local", (err, user) => {
+            if (err) {
+                return {
+                    status: err.status,
+                    success: false,
+                    message: err.message,
+                    error: err,
+                };
+            }
+            return req.login(user, loginError => {
+                if (loginError) {
+                    return {
+                        status: err.status,
+                        success: false,
+                        message: err.message,
+                        error: err,
+                    };
+                }
+                return {
+                    status: OK,
+                    success: true,
+                    message: `${user.email}님 로그인 성공`,
+                    result: user,
+                };
+            });
+        })(req, res, next);
+    }
 
     async signup(userDto: UserRequestDto): Promise<Mutation<UserResponseDto>> {
         const { email, password } = userDto;
@@ -45,13 +75,5 @@ export class AuthService {
                 error: err,
             };
         }
-    }
-
-    async login(userDto: UserRequestDto) {
-        // passport.authenticate("local", (authError: any, user: User) => {
-        //     if (authError) {
-        //         throw authError;
-        //     }
-        // });
     }
 }

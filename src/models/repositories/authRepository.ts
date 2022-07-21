@@ -24,6 +24,11 @@ export class AuthRepository implements IAuthRepository {
             };
         }
     }
+
+    async findOneByEmail(email: string): Promise<User | undefined> {
+        const result = await User.findOne({ email: email });
+        return result;
+    }
 }
 
 export { User };

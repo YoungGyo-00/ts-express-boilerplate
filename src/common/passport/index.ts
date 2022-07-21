@@ -3,7 +3,7 @@ import local from "./localStrategy";
 import { User } from "../../models/entities/User";
 
 export default () => {
-    passport.serializeUser((user: User, done) => {
+    passport.serializeUser((user, done) => {
         done(null, user.id);
     });
 

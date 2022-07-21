@@ -23,5 +23,13 @@ export class AuthController {
         }
     };
 
-    // async signin(req: Request, res: Response, next: NextFunction) {}
+    signin = async (req: Request, res: Response, next: NextFunction) => {
+        try {
+            const result = await this.authService.signin(req, res, next);
+
+            res.status(OK).send(result);
+        } catch (err) {
+            next(err);
+        }
+    };
 }
