@@ -1,7 +1,6 @@
 import express, { Router } from "express";
 import { isNotLoggedIn } from "../middlewares/index";
 import { AuthController } from "../../controllers/authController";
-import { Container } from "typedi";
 
 class AuthRouter {
     public router: Router = express.Router();
@@ -9,8 +8,13 @@ class AuthRouter {
 
     constructor() {
         this.router;
-        this.authController = Container.get(AuthController);
+        this.authController = new AuthController();
+        this.get();
         this.post();
+    }
+
+    get() {
+        // this.router.get("/signin", isNotLoggedIn, this.authController.signin);
     }
 
     post() {

@@ -1,4 +1,10 @@
-import { BAD_REQUEST, CONFLICT, FORBIDDEN, NOT_FOUND } from "http-status-codes";
+import {
+    BAD_REQUEST,
+    CONFLICT,
+    FORBIDDEN,
+    NOT_FOUND,
+    UNAUTHORIZED,
+} from "http-status-codes";
 
 abstract class RequestError extends Error {
     status!: number;
@@ -15,15 +21,15 @@ class BadRequest extends RequestError {
     }
 }
 
-class NOTFOUND extends RequestError {
+class NotFound extends RequestError {
     constructor(message = "리소스가 존재하지 않습니다.") {
         super(message);
         this.status = NOT_FOUND;
     }
 }
 
-class ISLOGGEDIN extends RequestError {
-    constructor(message = "이미 로그인 상태입니다.") {
+class Forbidden extends RequestError {
+    constructor(message = "컨텐츠에 접근할 권리가 없습니다.") {
         super(message);
         this.status = FORBIDDEN;
     }
@@ -36,4 +42,11 @@ class Conflict extends RequestError {
     }
 }
 
-export { BadRequest, NOTFOUND, ISLOGGEDIN, Conflict };
+class Unauthorized extends RequestError {
+    constructor(message = "인증이 필요합니다") {
+        super(message);
+        this.status = UNAUTHORIZED;
+    }
+}
+
+export { BadRequest, NotFound, Forbidden, Conflict, Unauthorized };

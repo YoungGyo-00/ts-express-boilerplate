@@ -1,4 +1,4 @@
-import { OK } from "http-status-codes";
+import { FORBIDDEN, OK } from "http-status-codes";
 import { Service } from "typedi";
 import { UserResponseDto } from "../../dto/UserDto";
 import { User } from "../entities/User";
@@ -17,10 +17,10 @@ export class AuthRepository implements IAuthRepository {
             };
         } catch (err: any) {
             return {
-                status: 403,
+                status: FORBIDDEN,
                 success: false,
-                message: "회원가입 오류",
-                error: err.message,
+                message: err.message,
+                error: err,
             };
         }
     }

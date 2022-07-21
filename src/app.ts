@@ -78,8 +78,8 @@ class App {
                     process.env.NODE_ENV !== "production" ? err : {};
                 res.status(err.status || 500);
 
-                console.error(err);
-                res.json({ message: err.message });
+                console.error(err.error);
+                res.status(err.status).json({ message: err.message });
             },
         );
     }

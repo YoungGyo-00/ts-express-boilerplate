@@ -1,12 +1,15 @@
 import { NextFunction, Request, Response } from "express";
 import { OK } from "http-status-codes";
-import { Service } from "typedi";
+import Container from "typedi";
 import { UserRequestDto } from "../dto/UserDto";
 import { AuthService } from "../services/authService";
 
-@Service()
 export class AuthController {
-    constructor(private authService: AuthService) {}
+    private authService: AuthService;
+    constructor() {
+        this.authService = Container.get(AuthService);
+    }
+
     signup = async (req: Request, res: Response, next: NextFunction) => {
         try {
             const userDto: UserRequestDto = req.body;
@@ -19,4 +22,6 @@ export class AuthController {
             next(err);
         }
     };
+
+    // async signin(req: Request, res: Response, next: NextFunction) {}
 }
