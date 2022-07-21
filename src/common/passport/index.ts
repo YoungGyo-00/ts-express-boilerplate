@@ -1,6 +1,8 @@
 import passport from "passport";
 import local from "./localStrategy";
-import { User } from "../../models/entities/User";
+import { AuthRepository } from "../../models/repositories/authRepository";
+
+const authRepository = new AuthRepository();
 
 export default () => {
     passport.serializeUser((user, done) => {
@@ -8,9 +10,8 @@ export default () => {
     });
 
     passport.deserializeUser((id: string, done) => {
-        User.findOne({
-            where: { email: id },
-        })
+        authRepository
+            .findOneByEmail(id)
             .then(user => done(null, user))
             .catch(err => done(err));
     });

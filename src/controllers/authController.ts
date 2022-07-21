@@ -10,22 +10,22 @@ export class AuthController {
         this.authService = Container.get(AuthService);
     }
 
-    signup = async (req: Request, res: Response, next: NextFunction) => {
+    signin = async (req: Request, res: Response, next: NextFunction) => {
         try {
-            const userDto: UserRequestDto = req.body;
-            const result = await this.authService.signup(userDto);
-
-            if (!result.success) throw result;
-
+            const result = await this.authService.signin(req, res, next);
+            console.log(4);
             res.status(OK).send(result);
         } catch (err) {
             next(err);
         }
     };
 
-    signin = async (req: Request, res: Response, next: NextFunction) => {
+    signup = async (req: Request, res: Response, next: NextFunction) => {
         try {
-            const result = await this.authService.signin(req, res, next);
+            const userDto: UserRequestDto = req.body;
+            const result = await this.authService.signup(userDto);
+
+            if (!result.success) throw result;
 
             res.status(OK).send(result);
         } catch (err) {

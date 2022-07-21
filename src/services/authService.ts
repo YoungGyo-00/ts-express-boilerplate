@@ -11,8 +11,9 @@ import { OK } from "http-status-codes";
 export class AuthService {
     constructor(private authRepository: AuthRepository) {}
 
-    async signin(req: Request, res: Response, next: NextFunction) {
-        passport.authenticate("local", (err, user) => {
+    async signin(req: Request, res: Response, next: NextFunction): Promise<Mutation<User>> {
+        return await passport.authenticate("local", async (err, user) => {
+            console.log(3);
             if (err) {
                 return {
                     status: err.status,

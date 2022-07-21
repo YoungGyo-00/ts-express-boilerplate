@@ -1,10 +1,4 @@
-import {
-    BAD_REQUEST,
-    CONFLICT,
-    FORBIDDEN,
-    NOT_FOUND,
-    UNAUTHORIZED,
-} from "http-status-codes";
+import { BAD_REQUEST, CONFLICT, FORBIDDEN, NOT_FOUND, UNAUTHORIZED } from "http-status-codes";
 
 abstract class RequestError extends Error {
     status!: number;

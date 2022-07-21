@@ -64,24 +64,19 @@ class App {
 
     errorHandler() {
         this.app.use((req: Request, res: Response, next: NextFunction) => {
-            const err: any = new Error(
-                `${req.method} ${req.url} 라우터가 없습니다`,
-            );
+            const err: any = new Error(`${req.method} ${req.url} 라우터가 없습니다`);
             err.status = 404;
             next(err);
         });
 
-        this.app.use(
-            (err: any, req: Request, res: Response, next: NextFunction) => {
-                res.locals.message = err.message;
-                res.locals.error =
-                    process.env.NODE_ENV !== "production" ? err : {};
-                res.status(err.status || 500);
+        this.app.use((err: any, req: Request, res: Response, next: NextFunction) => {
+            res.locals.message = err.message;
+            res.locals.error = process.env.NODE_ENV !== "production" ? err : {};
+            res.status(err.status || 500);
 
-                console.error(err.error);
-                res.status(err.status).json({ message: err.message });
-            },
-        );
+            console.error(err.error);
+            res.status(err.status).json({ message: err.message });
+        });
     }
 }
 

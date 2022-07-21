@@ -10,13 +10,4 @@ const db_port = Number(process.env.DB_PORT);
 const cookie_secret = process.env.COOKIE_SECRET;
 const env: string = process.env.NODE_ENV || "development";
 
-export {
-    port,
-    _username,
-    password,
-    database,
-    host,
-    db_port,
-    cookie_secret,
-    env,
-};
+export { port, _username, password, database, host, db_port, cookie_secret, env };
