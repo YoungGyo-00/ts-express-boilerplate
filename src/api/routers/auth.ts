@@ -1,6 +1,7 @@
 import express, { Router } from "express";
-import { isNotLoggedIn } from "@middlewares/index";
-import { AuthController } from "@controllers/authController";
+
+import { AuthController } from ".@controllers/authController";
+import { isNotLoggedIn } from ".@middlewares/index";
 
 class AuthRouter {
     public router: Router = express.Router();

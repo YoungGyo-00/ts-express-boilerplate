@@ -1,7 +1,7 @@
 import { FORBIDDEN, OK } from "http-status-codes";
 import { Service } from "typedi";
-import { UserResponseDto } from "@dtos/UserDto";
-import { User } from "@entities/User";
+import { UserResponseDto } from ".@dtos/UserDto";
+import { User } from ".@entities/User";
 import { IAuthRepository } from "./interface/IAuthRepository";
 
 @Service()

@@ -2,7 +2,7 @@ import express, { Router } from "express";
 import fs from "fs";
 import path from "path";
 
-const basename = path.basename(__filename);
+const basename: string = path.basename(__filename);
 
 class ApiRouter {
     public router: Router = express.Router();

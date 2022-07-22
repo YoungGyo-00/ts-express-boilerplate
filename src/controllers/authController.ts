@@ -2,8 +2,9 @@ import { NextFunction, Request, Response } from "express";
 import { OK } from "http-status-codes";
 import passport from "passport";
 import Container from "typedi";
-import { UserRequestDto } from "@dtos/UserDto";
-import { AuthService } from "@services/authService";
+
+import { UserRequestDto } from ".@dtos/UserDto";
+import { AuthService } from ".@services/authService";
 
 export class AuthController {
     private authService: AuthService;

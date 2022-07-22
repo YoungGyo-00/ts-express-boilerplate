@@ -1,9 +1,10 @@
-import passportLocal from "passport-local";
 import bcrypt from "bcrypt";
 import passport from "passport";
-import { AuthRepository } from "@repositories/authRepository";
+import passportLocal from "passport-local";
 import Container from "typedi";
-import { Unauthorized } from "@errors/error";
+
+import { Unauthorized } from ".@errors/error";
+import { AuthRepository } from ".@repositories/authRepository";
 
 const LocalStrategy = passportLocal.Strategy;
 const config = {

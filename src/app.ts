@@ -9,6 +9,7 @@ import cors from "cors";
 import ApiRouter from "./api/routers/index";
 import { PORT, COOKIE_SECRET } from "@config/env";
 
+const MAXAGE = 1 * 60 * 60 * 1000;
 const SESS_OPTION = {
     retries: 50,
     minTimeOut: 100,
@@ -47,11 +48,10 @@ class App {
                 cookie: {
                     httpOnly: true,
                     secure: false,
-                    maxAge: 1 * 60 * 60 * 1000,
+                    maxAge: MAXAGE,
                 },
-                rolling: true, // expiration reset
+                rolling: true,
                 genid: () => {
-                    // 세션 ID 만들기, req 첨부된 일부 값을 사용하려면 첫 번째 인수로 req 제공
                     return "testCookie";
                 },
             }),

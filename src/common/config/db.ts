@@ -1,6 +1,7 @@
 import path from "path";
 import { SnakeNamingStrategy } from "typeorm-naming-strategies";
-import { HOST, DB_PORT, _USERNAME, PASSWORD, DATABASE } from "./env";
+
+import { DATABASE, DB_PORT, HOST, PASSWORD, _USERNAME } from "./env";
 
 const configs: Signature = {
     development: {
