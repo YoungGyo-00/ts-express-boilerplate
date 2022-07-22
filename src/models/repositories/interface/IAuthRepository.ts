@@ -1,4 +1,4 @@
-import { UserResponseDto } from "../../../dto/UserDto";
+import { UserResponseDto } from "../../../dtos/UserDto";
 import { User } from "../../entities/User";
 
 export interface IAuthRepository {

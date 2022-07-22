@@ -1,5 +1,5 @@
 import { Request, Response, NextFunction } from "express";
-import { Forbidden } from "../../common/errors/error";
+import { Forbidden } from "@errors/error";
 
 const isLoggedIn = async (req: Request, res: Response, next: NextFunction) => {
     try {
@@ -21,7 +21,8 @@ const isNotLoggedIn = async (req: Request, res: Response, next: NextFunction) =>
         } else {
             throw new Forbidden("이미 로그인 중입니다.");
         }
-    } catch (err) {
+    } catch (err: any) {
+        console.log(err);
         next(err);
     }
 };

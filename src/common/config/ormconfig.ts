@@ -1,7 +1,7 @@
 import { configs } from "./db";
 import { ConnectionOptions } from "typeorm";
-import { env } from "./env";
+import { ENV } from "./env";
 
-const connectionOptions: ConnectionOptions = configs[env];
+const connectionOptions: ConnectionOptions = configs[ENV];
 
 export { connectionOptions };

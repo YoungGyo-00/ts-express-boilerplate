@@ -1,9 +1,9 @@
 import passportLocal from "passport-local";
 import bcrypt from "bcrypt";
 import passport from "passport";
-import { AuthRepository } from "../../models/repositories/authRepository";
-import { Unauthorized } from "../errors/error";
+import { AuthRepository } from "@repositories/authRepository";
 import Container from "typedi";
+import { Unauthorized } from "@errors/error";
 
 const LocalStrategy = passportLocal.Strategy;
 const config = {
@@ -16,9 +16,7 @@ export default () => {
     passport.use(
         new LocalStrategy(config, async (email: string, password: string, done) => {
             try {
-                console.log(1);
                 const exUser = await authRepository.findOneByEmail(email);
-                console.log(2);
                 if (!exUser) {
                     throw new Unauthorized("회원을 찾을 수 없습니다.");
                 }

@@ -1,13 +1,13 @@
 import { config } from "dotenv";
 config({ path: "src/.env" });
 
-const port = process.env.PORT;
-const _username = process.env._USERNAME;
-const password = process.env.PASSWORD;
-const database = process.env.DATABASE;
-const host = process.env.HOST;
-const db_port = Number(process.env.DB_PORT);
-const cookie_secret = process.env.COOKIE_SECRET;
-const env: string = process.env.NODE_ENV || "development";
+const PORT = process.env.PORT;
+const _USERNAME = process.env._USERNAME;
+const PASSWORD = process.env.PASSWORD;
+const DATABASE = process.env.DATABASE;
+const HOST = process.env.HOST;
+const DB_PORT = Number(process.env.DB_PORT);
+const COOKIE_SECRET = process.env.COOKIE_SECRET;
+const ENV: string = process.env.NODE_ENV || "development";
 
-export { port, _username, password, database, host, db_port, cookie_secret, env };
+export { PORT, _USERNAME, PASSWORD, DATABASE, HOST, DB_PORT, COOKIE_SECRET, ENV };

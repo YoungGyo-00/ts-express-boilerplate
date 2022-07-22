@@ -7,10 +7,16 @@ import FileStore from "session-file-store";
 import session from "express-session";
 import cors from "cors";
 import ApiRouter from "./api/routers/index";
-import { port, cookie_secret } from "./common/config/env";
+import { PORT, COOKIE_SECRET } from "@config/env";
+
+const SESS_OPTION = {
+    retries: 50,
+    minTimeOut: 100,
+    maxTimeout: 200,
+};
 
 const sessionStore = FileStore(session);
-const store = new sessionStore();
+const store = new sessionStore(SESS_OPTION);
 
 class App {
     public app: Application;
@@ -24,18 +30,18 @@ class App {
     }
 
     setMiddleWare() {
-        this.app.set("port", port || 8080);
+        this.app.set("port", PORT || 8080);
         passportConfig();
 
         this.app.use(cors());
         this.app.use(morgan("dev"));
         this.app.use(express.json());
         this.app.use(express.urlencoded({ extended: false }));
-        this.app.use(cookieParser(cookie_secret));
+        this.app.use(cookieParser(COOKIE_SECRET));
         this.app.use(
             session({
                 resave: false,
-                secret: cookie_secret || "secret",
+                secret: COOKIE_SECRET || "secret",
                 store: store,
                 saveUninitialized: false,
                 cookie: {
@@ -75,7 +81,7 @@ class App {
             res.status(err.status || 500);
 
             console.error(err.error);
-            res.status(err.status).json({ message: err.message });
+            res.status(err.status).json({ success: err.success, message: err.message });
         });
     }
 }

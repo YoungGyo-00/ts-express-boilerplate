@@ -1,15 +1,15 @@
 import path from "path";
 import { SnakeNamingStrategy } from "typeorm-naming-strategies";
-import { host, db_port, _username, password, database } from "./env";
+import { HOST, DB_PORT, _USERNAME, PASSWORD, DATABASE } from "./env";
 
 const configs: Signature = {
     development: {
         type: "mysql",
-        host: host,
-        port: db_port,
-        username: _username,
-        password: password,
-        database: database,
+        host: HOST,
+        port: DB_PORT,
+        username: _USERNAME,
+        password: PASSWORD,
+        database: DATABASE,
         timezone: "Z",
         namingStrategy: new SnakeNamingStrategy(),
         synchronize: true,
@@ -20,11 +20,11 @@ const configs: Signature = {
 
     production: {
         type: "mysql",
-        host: host,
-        port: Number(db_port),
-        username: _username,
-        password: password,
-        database: database,
+        host: HOST,
+        port: DB_PORT,
+        username: _USERNAME,
+        password: PASSWORD,
+        database: DATABASE,
         timezone: "Z",
         namingStrategy: new SnakeNamingStrategy(),
         synchronize: true,

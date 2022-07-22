@@ -1,11 +1,8 @@
 import { Service } from "typedi";
-import { BadRequest, Conflict } from "../common/errors/error";
-import { UserRequestDto, UserResponseDto } from "../dto/UserDto";
-import { AuthRepository, User } from "../models/repositories/authRepository";
+import { BadRequest, Conflict } from "@errors/error";
+import { UserRequestDto, UserResponseDto } from "@dtos/UserDto";
+import { AuthRepository, User } from "@repositories/authRepository";
 import bcrypt from "bcrypt";
-import { NextFunction, Request, Response } from "express";
-import passport from "passport";
-import { OK } from "http-status-codes";
 
 @Service()
 export class AuthService {

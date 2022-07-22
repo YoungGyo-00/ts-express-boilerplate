@@ -2,8 +2,8 @@ import { NextFunction, Request, Response } from "express";
 import { OK } from "http-status-codes";
 import passport from "passport";
 import Container from "typedi";
-import { UserRequestDto } from "../dto/UserDto";
-import { AuthService } from "../services/authService";
+import { UserRequestDto } from "@dtos/UserDto";
+import { AuthService } from "@services/authService";
 
 export class AuthController {
     private authService: AuthService;
@@ -21,16 +21,16 @@ export class AuthController {
                     error: err,
                 });
             }
-            return req.login(user, loginError => {
+            req.login(user, loginError => {
                 if (loginError) {
                     next({
-                        status: err.status,
+                        status: loginError.status,
                         success: false,
-                        message: err.message,
-                        error: err,
+                        message: loginError.message,
+                        error: loginError,
                     });
                 }
-                return res.status(OK).send({
+                res.status(OK).send({
                     success: true,
                     message: `${user.email}님 로그인 성공`,
                     result: user,

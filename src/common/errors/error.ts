@@ -1,10 +1,12 @@
 import { BAD_REQUEST, CONFLICT, FORBIDDEN, NOT_FOUND, UNAUTHORIZED } from "http-status-codes";
 
 abstract class RequestError extends Error {
-    status!: number;
+    status: number;
+    success: boolean;
 
     constructor(message?: string) {
         super(message);
+        this.success = false;
     }
 }
 
