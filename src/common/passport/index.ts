@@ -10,6 +10,7 @@ export default () => {
     });
 
     passport.deserializeUser((id: string, done) => {
+        console.log(6);
         authRepository
             .findOneByEmail(id)
             .then(user => done(null, user))

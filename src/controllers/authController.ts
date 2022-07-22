@@ -12,7 +12,7 @@ export class AuthController {
 
     signin = async (req: Request, res: Response, next: NextFunction) => {
         try {
-            const result = await this.authService.signin(req, res, next);
+            const result = await this.authService.signin(req);
             console.log(4);
             res.status(OK).send(result);
         } catch (err) {

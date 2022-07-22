@@ -11,9 +11,8 @@ import { OK } from "http-status-codes";
 export class AuthService {
     constructor(private authRepository: AuthRepository) {}
 
-    async signin(req: Request, res: Response, next: NextFunction): Promise<Mutation<User>> {
+    async signin(req: Request): Promise<Mutation<User>> {
         return await passport.authenticate("local", async (err, user) => {
-            console.log(3);
             if (err) {
                 return {
                     status: err.status,
@@ -31,6 +30,7 @@ export class AuthService {
                         error: err,
                     };
                 }
+                console.log(5);
                 return {
                     status: OK,
                     success: true,
@@ -38,7 +38,7 @@ export class AuthService {
                     result: user,
                 };
             });
-        })(req, res, next);
+        })(req);
     }
 
     async signup(userDto: UserRequestDto): Promise<Mutation<UserResponseDto>> {
