@@ -11,36 +11,6 @@ import { OK } from "http-status-codes";
 export class AuthService {
     constructor(private authRepository: AuthRepository) {}
 
-    async signin(req: Request): Promise<Mutation<User>> {
-        return await passport.authenticate("local", async (err, user) => {
-            if (err) {
-                return {
-                    status: err.status,
-                    success: false,
-                    message: err.message,
-                    error: err,
-                };
-            }
-            return req.login(user, loginError => {
-                if (loginError) {
-                    return {
-                        status: err.status,
-                        success: false,
-                        message: err.message,
-                        error: err,
-                    };
-                }
-                console.log(5);
-                return {
-                    status: OK,
-                    success: true,
-                    message: `${user.email}님 로그인 성공`,
-                    result: user,
-                };
-            });
-        })(req);
-    }
-
     async signup(userDto: UserRequestDto): Promise<Mutation<UserResponseDto>> {
         const { email, password } = userDto;
 

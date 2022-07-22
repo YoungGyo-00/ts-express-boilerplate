@@ -1,5 +1,6 @@
 import { NextFunction, Request, Response } from "express";
 import { OK } from "http-status-codes";
+import passport from "passport";
 import Container from "typedi";
 import { UserRequestDto } from "../dto/UserDto";
 import { AuthService } from "../services/authService";
@@ -11,13 +12,31 @@ export class AuthController {
     }
 
     signin = async (req: Request, res: Response, next: NextFunction) => {
-        try {
-            const result = await this.authService.signin(req);
-            console.log(4);
-            res.status(OK).send(result);
-        } catch (err) {
-            next(err);
-        }
+        passport.authenticate("local", async (err, user) => {
+            if (err) {
+                next({
+                    status: err.status,
+                    success: false,
+                    message: err.message,
+                    error: err,
+                });
+            }
+            return req.login(user, loginError => {
+                if (loginError) {
+                    next({
+                        status: err.status,
+                        success: false,
+                        message: err.message,
+                        error: err,
+                    });
+                }
+                return res.status(OK).send({
+                    success: true,
+                    message: `${user.email}님 로그인 성공`,
+                    result: user,
+                });
+            });
+        })(req, res, next);
     };
 
     signup = async (req: Request, res: Response, next: NextFunction) => {

@@ -15,6 +15,7 @@ const isLoggedIn = async (req: Request, res: Response, next: NextFunction) => {
 
 const isNotLoggedIn = async (req: Request, res: Response, next: NextFunction) => {
     try {
+        console.log(req.isAuthenticated());
         if (!req.isAuthenticated()) {
             next();
         } else {
