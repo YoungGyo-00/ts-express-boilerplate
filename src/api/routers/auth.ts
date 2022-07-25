@@ -1,7 +1,7 @@
 import express, { Router } from "express";
 
-import { AuthController } from ".@controllers/authController";
-import { isNotLoggedIn } from ".@middlewares/index";
+import { AuthController } from "@controllers/authController";
+import { isLoggedIn, isNotLoggedIn } from "@middlewares/index";
 
 class AuthRouter {
     public router: Router = express.Router();
@@ -10,7 +10,12 @@ class AuthRouter {
     constructor() {
         this.router;
         this.authController = new AuthController();
+        this.get();
         this.post();
+    }
+
+    get() {
+        // this.router.get("/logout", isLoggedIn, this.authController.logout);
     }
 
     post() {

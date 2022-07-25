@@ -6,8 +6,5 @@
     "semi": true,
     "trailingComma": "all",
     "printWidth": 120,
-    "bracketSpacing": true,
-    "importOrder": ["^components/(.*)$", "^[./]"],
-    "importOrderSeparation": true,
-    "importOrderSortSpecifiers": true
+    "bracketSpacing": true
 }

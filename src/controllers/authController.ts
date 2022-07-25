@@ -3,8 +3,8 @@ import { OK } from "http-status-codes";
 import passport from "passport";
 import Container from "typedi";
 
-import { UserRequestDto } from ".@dtos/UserDto";
-import { AuthService } from ".@services/authService";
+import { UserRequestDto } from "@dtos/UserDto";
+import { AuthService } from "@services/authService";
 
 export class AuthController {
     private authService: AuthService;
@@ -13,6 +13,7 @@ export class AuthController {
     }
 
     signin = async (req: Request, res: Response, next: NextFunction) => {
+        console.log(req);
         passport.authenticate("local", async (err, user) => {
             if (err) {
                 next({
@@ -47,9 +48,15 @@ export class AuthController {
 
             if (!result.success) throw result;
 
-            res.status(OK).send(result);
+            res.status(result.status).send(result);
         } catch (err) {
             next(err);
         }
     };
+
+    // logout = async (req: Request, res: Response, next: NextFunction) => {
+    //     req.logout();
+    //     req.session.destroy();
+    //     res.status(OK).send({ message: "로그아웃" });
+    // };
 }

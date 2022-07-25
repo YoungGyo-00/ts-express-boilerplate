@@ -2,7 +2,7 @@ import "reflect-metadata";
 import { createConnection } from "typeorm";
 
 import app from "../app";
-import { connectionOptions } from ".@config/ormconfig";
+import { connectionOptions } from "@config/ormconfig";
 
 createConnection(connectionOptions)
     .then(() => {

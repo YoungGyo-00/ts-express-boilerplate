@@ -1,8 +1,9 @@
-import { Service } from "typedi";
-import { UserRequestDto, UserResponseDto } from ".@dtos/UserDto";
-import { AuthRepository, User } from ".@repositories/authRepository";
 import bcrypt from "bcrypt";
-import { BadRequest, Conflict } from ".@errors/error";
+import { Service } from "typedi";
+
+import { UserRequestDto, UserResponseDto } from "@dtos/UserDto";
+import { AuthRepository, User } from "@repositories/authRepository";
+import { BadRequest, Conflict } from "@errors/error";
 
 @Service()
 export class AuthService {

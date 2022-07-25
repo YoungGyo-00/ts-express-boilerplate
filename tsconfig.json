@@ -16,17 +16,16 @@
         "esModuleInterop": true,
         "experimentalDecorators": true,
         "emitDecoratorMetadata": true,
-        "sourceMap": true,
         "baseUrl": "src",
         "paths": {
-            ".@services/*": ["services/*"],
-            ".@controllers/*": ["controllers/*"],
-            ".@errors/*": ["common/errors/*"],
-            ".@dtos/*": ["dtos/*"],
-            ".@entities/*": ["models/entities/*"],
-            ".@repositories/*": ["models/repositories/*"],
-            ".@middlewares/*": ["api/middlewares/*"],
-            ".@config/*": ["common/config/*"]
+            "@services/*": ["services/*"],
+            "@controllers/*": ["controllers/*"],
+            "@errors/*": ["common/errors/*"],
+            "@dtos/*": ["dtos/*"],
+            "@entities/*": ["models/entities/*"],
+            "@repositories/*": ["models/repositories/*"],
+            "@middlewares/*": ["api/middlewares/*"],
+            "@config/*": ["common/config/*"]
         }
     },
     "include": ["src/**/*"],
