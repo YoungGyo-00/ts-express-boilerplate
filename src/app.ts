@@ -2,6 +2,7 @@ import express, { Application, NextFunction, Request, Response } from "express";
 import morgan from "morgan";
 import cookieParser from "cookie-parser";
 import passport from "passport";
+import { v4 as uuid } from "uuid";
 import passportConfig from "./common/passport";
 import FileStore from "session-file-store";
 import session from "express-session";

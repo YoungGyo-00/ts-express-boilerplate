@@ -13,7 +13,6 @@ export class AuthController {
     }
 
     signin = async (req: Request, res: Response, next: NextFunction) => {
-        console.log(req);
         passport.authenticate("local", async (err, user) => {
             if (err) {
                 next({
@@ -23,6 +22,7 @@ export class AuthController {
                     error: err,
                 });
             }
+            console.log("로그인 전");
             req.login(user, loginError => {
                 if (loginError) {
                     next({
@@ -54,9 +54,10 @@ export class AuthController {
         }
     };
 
-    // logout = async (req: Request, res: Response, next: NextFunction) => {
-    //     req.logout();
-    //     req.session.destroy();
-    //     res.status(OK).send({ message: "로그아웃" });
-    // };
+    signout = async (req: any, res: Response, next: NextFunction) => {
+        const result = await this.authService.signout(req);
+
+        if (!result.success) next(result);
+        else res.status(result.status).send(result);
+    };
 }

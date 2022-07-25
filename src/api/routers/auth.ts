@@ -15,7 +15,7 @@ class AuthRouter {
     }
 
     get() {
-        // this.router.get("/logout", isLoggedIn, this.authController.logout);
+        this.router.get("/logout", isLoggedIn, this.authController.signout);
     }
 
     post() {

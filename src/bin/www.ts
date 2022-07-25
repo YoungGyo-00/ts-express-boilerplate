@@ -9,7 +9,7 @@ createConnection(connectionOptions)
         console.log("DB Connection");
 
         app.listen(app.get("port"), () => {
-            console.log(app.get("port") + "연결 성공");
+            console.log(app.get("port") + " 포트 연결 성공");
         });
     })
     .catch(err => {

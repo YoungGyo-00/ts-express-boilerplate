@@ -45,4 +45,23 @@ export class AuthService {
             };
         }
     }
+
+    async signout(req: any): Promise<Mutation<null>> {
+        await req.logout((err: any): any => {
+            if (err) {
+                return {
+                    status: 403,
+                    success: false,
+                    message: "로그아웃 실패",
+                    error: err,
+                };
+            }
+        });
+
+        return {
+            status: 200,
+            success: true,
+            message: `${req.session.passport.user} 로그아웃 성공`,
+        };
+    }
 }
