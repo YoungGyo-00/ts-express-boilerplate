@@ -1,4 +1,4 @@
-import express, { Router } from "express";
+import express, { NextFunction, Request, Response, Router } from "express";
 
 import { AuthController } from "@controllers/authController";
 import { isLoggedIn, isNotLoggedIn } from "@middlewares/index";
@@ -10,8 +10,16 @@ class AuthRouter {
     constructor() {
         this.router;
         this.authController = new AuthController();
+        this.init();
         this.get();
         this.post();
+    }
+
+    init() {
+        this.router.use((req: Request, res: Response, next: NextFunction) => {
+            res.locals.user = req.user;
+            next();
+        });
     }
 
     get() {

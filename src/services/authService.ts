@@ -1,9 +1,10 @@
+import { Request } from "express";
 import bcrypt from "bcrypt";
 import { Service } from "typedi";
 
 import { UserRequestDto, UserResponseDto } from "@dtos/UserDto";
 import { AuthRepository, User } from "@repositories/authRepository";
-import { BadRequest, Conflict } from "@errors/error";
+import { BadRequest, Conflict } from "@errors/errorGenerator";
 
 @Service()
 export class AuthService {
@@ -46,8 +47,8 @@ export class AuthService {
         }
     }
 
-    async signout(req: any): Promise<Mutation<null>> {
-        await req.logout((err: any): any => {
+    async signout(req: Request): Promise<Mutation<null>> {
+        req.logout((err: any): any => {
             if (err) {
                 return {
                     status: 403,
@@ -56,12 +57,13 @@ export class AuthService {
                     error: err,
                 };
             }
+            console.log(req.user);
         });
 
         return {
             status: 200,
             success: true,
-            message: `${req.session.passport.user} 로그아웃 성공`,
+            message: "로그아웃 성공",
         };
     }
 }

@@ -1,4 +1,5 @@
 import path from "path";
+
 import { SnakeNamingStrategy } from "typeorm-naming-strategies";
 
 import { DATABASE, DB_PORT, HOST, PASSWORD, _USERNAME } from "./env";

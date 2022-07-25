@@ -1,12 +1,16 @@
+import path from "path";
+
 import express, { Application, NextFunction, Request, Response } from "express";
 import morgan from "morgan";
 import cookieParser from "cookie-parser";
 import passport from "passport";
-import { v4 as uuid } from "uuid";
-import passportConfig from "./common/passport";
 import FileStore from "session-file-store";
 import session from "express-session";
 import cors from "cors";
+import swaggerUi from "swagger-ui-express";
+import YAML from "yamljs";
+
+import passportConfig from "./common/passport";
 import ApiRouter from "./api/routers/index";
 import { PORT, COOKIE_SECRET } from "@config/env";
 
@@ -16,7 +20,7 @@ const SESS_OPTION = {
     minTimeOut: 100,
     maxTimeout: 200,
 };
-
+const swaggerSpec = YAML.load(path.join(__dirname, "common/swagger/openapi.yaml"));
 const sessionStore = FileStore(session);
 const store = new sessionStore(SESS_OPTION);
 
@@ -66,6 +70,7 @@ class App {
     }
 
     getRouter() {
+        this.app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerSpec, { explorer: true }));
         this.app.use(ApiRouter);
     }
 

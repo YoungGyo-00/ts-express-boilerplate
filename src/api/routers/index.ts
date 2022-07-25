@@ -1,6 +1,7 @@
-import express, { Router } from "express";
 import fs from "fs";
 import path from "path";
+
+import express, { Router } from "express";
 
 const basename: string = path.basename(__filename);
 

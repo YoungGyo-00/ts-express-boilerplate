@@ -3,7 +3,7 @@ import passport from "passport";
 import passportLocal from "passport-local";
 import Container from "typedi";
 
-import { Unauthorized } from "@errors/error";
+import { Unauthorized } from "@errors/errorGenerator";
 import { AuthRepository } from "@repositories/authRepository";
 
 const LocalStrategy = passportLocal.Strategy;
