@@ -1,14 +1,7 @@
-openapi: "3.0.0"
-info:
-    version: 1.0.0
-    title: Swagger API docs
-    description: API 문서입니다
-    license:
-        name: MLT
-servers:
-    - url: http://localhost:8080/
-paths: # Server URL을 제외한 나머지 URL
-    /api/auth/signin:
+# /api/auth:
+#   $ref: "./auth/auth.yaml" # 개별 파일에 정의된 OpenAPI 코드 단편 참조
+
+/api/auth/signin:
         get:
             summary: Test
             operationId: operationId Test
@@ -25,4 +18,3 @@ paths: # Server URL을 제외한 나머지 URL
             response:
                 '200':
                     description: A paged array of pets
-                

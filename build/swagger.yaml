@@ -4,7 +4,24 @@ info:
   title: Swagger API docs
   description: API 문서입니다
   license:
-    name: MIT
+    name: MLT
 servers:
   - url: 'http://localhost:8080/'
-paths: {}
+paths:
+  /api/auth/signin:
+    get:
+      summary: Test
+      operationId: operationId Test
+      tags:
+        - tags
+      parameters:
+        - name: parameter name Test
+          in: query
+          description: parameter description Test
+          required: false
+          schema:
+            type: integer
+            format: int32
+      response:
+        '200':
+          description: A paged array of pets
