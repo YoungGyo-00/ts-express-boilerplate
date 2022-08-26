@@ -16,12 +16,12 @@ paths:
         - tags
       parameters:
         - name: parameter name Test
-          in: query
-          description: parameter description Test
-          required: false
-          schema:
-            type: integer
-            format: int32
+      in: query
+      description: parameter description Test
+      required: false
+      schema:
+        type: integer
+        format: int32
       response:
         '200':
           description: A paged array of pets
